@@ -1,0 +1,7 @@
+condition_id,kappa,tight_solver,solver_status,solver_success,message,function_evaluations,max_absolute_state_error,numerical_accepted,initial_x1,initial_x2
+primary_kappa_0_operator_gain_direction,0.0,False,success,True,The solver successfully reached the end of the integration interval.,2417,2.220446049250313e-16,True,1.0,0.0
+primary_kappa_4_operator_gain_direction,4.0,False,success,True,The solver successfully reached the end of the integration interval.,2417,6.804363002006077e-16,True,0.505638201731562,0.8627456223880084
+primary_kappa_8_operator_gain_direction,8.0,False,success,True,The solver successfully reached the end of the integration interval.,2417,9.50197851991224e-16,True,0.24894911865638394,0.9685165648145672
+primary_kappa_8_coordinate_e2,8.0,False,success,True,The solver successfully reached the end of the integration interval.,2432,1.5543122344752192e-15,True,0.0,1.0
+tight_kappa_4_operator_gain_direction,4.0,True,success,True,The solver successfully reached the end of the integration interval.,12011,6.753223014464259e-16,True,0.505638201731562,0.8627456223880084
+tight_kappa_8_operator_gain_direction,8.0,True,success,True,The solver successfully reached the end of the integration interval.,12011,1.3506446028928519e-15,True,0.24894911865638394,0.9685165648145672

@@ -1,0 +1,5 @@
+kappa,normality,eigenvalue_1,eigenvalue_2,asymptotically_stable,sampled_max_gain_primary,sampled_peak_time_primary,sampled_max_positive_time_gain_primary,sampled_positive_peak_time_primary,sampled_max_gain_refined,sampled_peak_time_refined,matched_normal_primary_max_gain,gain_difference_from_normal,grid_peak_gain_absolute_change,grid_peak_time_absolute_change,resolution_accepted
+0.0,normal,-1.0,-2.0,True,1.0,0.0,0.9900498337491681,0.01,1.0,0.0,1.0,0.0,0.0,0.0,True
+2.0,non_normal,-1.0,-2.0,True,1.0,0.0,0.996187439891656,0.01,1.0,0.0,1.0,0.0,0.0,0.0,True
+4.0,non_normal,-1.0,-2.0,True,1.1743531788210526,0.48,1.1743531788210526,0.48,1.1743531788210526,0.48,1.0,0.1743531788210526,0.0,0.0,True
+8.0,non_normal,-1.0,-2.0,True,2.080045546789268,0.65,2.080045546789268,0.65,2.080092304927483,0.645,1.0,1.0800455467892678,4.675813821508612e-05,0.0050000000000000044,True

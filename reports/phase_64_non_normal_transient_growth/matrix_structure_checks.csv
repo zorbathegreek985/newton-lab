@@ -1,0 +1,5 @@
+kappa,matched_eigenvalues,eigenvalue_max_difference,strictly_stable,normal_matrix_normality_residual,normal_matrix_is_normal,normality_residual,normality_matches_declared_coupling
+0.0,True,0.0,True,0.0,True,0.0,True
+2.0,True,0.0,True,0.0,True,4.47213595499958,True
+4.0,True,0.0,True,0.0,True,16.492422502470642,True
+8.0,True,0.0,True,0.0,True,64.4980619863884,True

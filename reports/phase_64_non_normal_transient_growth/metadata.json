@@ -1,0 +1,31 @@
+{
+  "analytic_reference_check_rows": 25,
+  "design_exploration_stage": "exploratory_design_only_not_primary_evaluation",
+  "external_data_or_services": false,
+  "gain_curve_rows": 1604,
+  "kappa_values": [
+    0.0,
+    2.0,
+    4.0,
+    8.0
+  ],
+  "kuramoto_thread_status": "CLOSED_INCONCLUSIVE_UNDER_DECLARED_PROTOCOL",
+  "matrix_structure_check_rows": 4,
+  "norm": "Euclidean_induced_matrix_2_norm",
+  "numpy_version": "2.5.3",
+  "phase": 64,
+  "phase32_status": "BLOCKED_AUTHORIZATION",
+  "phase52_status": "NO-GO",
+  "phase62_status": "COMPLETE_BOUNDED_PILOT",
+  "platform": "Windows-11-10.0.22631-SP0",
+  "primary_grid_points_per_kappa": 401,
+  "protocol_sha256": "6AE93A4020FE12E19D1B26F5EF36DF7EE07F547ACBAB5C590A74B73B78B1D523",
+  "python_version": "3.12.10",
+  "resolution_grid_points_per_kappa": 801,
+  "scipy_version": "1.18.1",
+  "state_space": "abstract_dimensionless_R2",
+  "study": "matched_spectrum_non_normal_finite_time_gain",
+  "trajectory_integrations_attempted": 6,
+  "trajectory_integrations_successful": 6,
+  "trajectory_sample_rows": 3206
+}

@@ -1,0 +1,65 @@
+{
+  "decision": "Use kappa={0,2,4,8}, primary gain grid dt=0.01 on [0,4], and predeclared effect threshold 0.01. The grid includes a below-threshold case and two clearly above-threshold candidates in this design exploration. Use dt=0.005 as resolution check. T=4 spans four slow-mode decay times, leaving exp(-4) of that mode at the horizon.",
+  "limitations": "This deterministic calculation informed design choices only. It is not primary evaluation and was not used to tune after seeing primary results.",
+  "method": "Direct analytic triangular propagator and largest singular value; no solve_ivp integrations and no primary artifacts.",
+  "parameters": {
+    "a": 1.0,
+    "b": 2.0,
+    "candidate_kappa": [
+      0.0,
+      2.0,
+      4.0,
+      8.0
+    ],
+    "design_scan_step": 0.001,
+    "horizon": 4.0
+  },
+  "reason": "Choose a compact coupling set that includes zero coupling, a weak-coupling case, and cases on both sides of a visible positive-time gain threshold before freezing the primary protocol.",
+  "results": [
+    {
+      "design_scan_peak_gain": 1.0,
+      "design_scan_peak_time": 0.0,
+      "kappa": 0.0,
+      "normal_reference_peak_gain": 1.0,
+      "primary_grid_peak_gain": 1.0,
+      "primary_grid_peak_time": 0.0,
+      "primary_to_refined_gain_difference": 0.0,
+      "refined_grid_peak_gain": 1.0,
+      "refined_grid_peak_time": 0.0
+    },
+    {
+      "design_scan_peak_gain": 1.0,
+      "design_scan_peak_time": 0.0,
+      "kappa": 2.0,
+      "normal_reference_peak_gain": 1.0,
+      "primary_grid_peak_gain": 1.0,
+      "primary_grid_peak_time": 0.0,
+      "primary_to_refined_gain_difference": 0.0,
+      "refined_grid_peak_gain": 1.0,
+      "refined_grid_peak_time": 0.0
+    },
+    {
+      "design_scan_peak_gain": 1.1743531788210526,
+      "design_scan_peak_time": 0.48,
+      "kappa": 4.0,
+      "normal_reference_peak_gain": 1.0,
+      "primary_grid_peak_gain": 1.1743531788210526,
+      "primary_grid_peak_time": 0.48,
+      "primary_to_refined_gain_difference": 0.0,
+      "refined_grid_peak_gain": 1.1743531788210526,
+      "refined_grid_peak_time": 0.48
+    },
+    {
+      "design_scan_peak_gain": 2.080092304927483,
+      "design_scan_peak_time": 0.645,
+      "kappa": 8.0,
+      "normal_reference_peak_gain": 1.0,
+      "primary_grid_peak_gain": 2.080045546789268,
+      "primary_grid_peak_time": 0.65,
+      "primary_to_refined_gain_difference": 4.675813821508612e-05,
+      "refined_grid_peak_gain": 2.080092304927483,
+      "refined_grid_peak_time": 0.645
+    }
+  ],
+  "stage": "exploratory_design_only_not_primary_evaluation"
+}

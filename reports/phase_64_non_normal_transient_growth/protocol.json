@@ -1,0 +1,136 @@
+{
+  "analytic_reference": {
+    "coordinate_note": "G is invariant under orthogonal similarity transformations but can change under arbitrary state rescaling.",
+    "gain": "G(t)=largest singular value of P_kappa(t).",
+    "maximum": "Maximum over the explicitly sampled time grid, not a continuous-time maximizer.",
+    "propagator": "P_kappa(t)=[[exp(-a*t), kappa*(exp(-a*t)-exp(-b*t))/(b-a)],[0,exp(-b*t)]] for a != b; P_0 is diagonal."
+  },
+  "design_gate": {
+    "norm": "Euclidean vector norm; induced matrix 2-norm (largest singular value). Not energy or a physical magnitude.",
+    "permitted_coordinate_changes": "Orthogonal changes of basis only; arbitrary rescaling and nonorthogonal similarity changes are outside the declared metric.",
+    "physical_claim": "None; no physical system mapping is asserted.",
+    "state": "Two abstract dimensionless coordinates x1,x2 in R^2, each normalized as a coefficient on an orthonormal unit basis direction with equal scale.",
+    "status": "PASS_SCOPED_ABSTRACT_STATE_SPACE"
+  },
+  "external_data_or_services": false,
+  "hypotheses_and_decisions": {
+    "H1_finite_time_amplification": "Supported if any nonzero kappa has a sampled positive-time G(t)>1.01 on both primary and refined grids. Not supported if none does. Inconclusive if grid resolution fails or required gain values are nonfinite.",
+    "H2_exceeds_matched_normal": "Supported if any nonzero kappa has sampled full-horizon maximum gain at least 0.01 above the normal baseline on both grids. Not supported if none does. Inconclusive if resolution check fails.",
+    "H3_numerical_agreement": "Supported if all required integrations succeed and all trajectory errors are <=1e-8, propagator cross-checks <=1e-12, and resolution limits are met. Not supported if an integration fails or exceeds tolerance; report each failed condition without dropping it.",
+    "normal_baseline": "Its sampled gain must never exceed 1+1e-12; otherwise implementation/check fails.",
+    "zero_coupling": "kappa=0 analytic gain curves must match A0 within 1e-14."
+  },
+  "model": {
+    "assumptions": [
+      "linear autonomous system",
+      "deterministic and unforced",
+      "abstract dimensionless state coordinates",
+      "a != b",
+      "Euclidean norm in declared orthonormal basis"
+    ],
+    "coupling_grid_rationale": "The separate design_exploration.json uses only the exact triangular propagator and SVD. It includes zero, a below-threshold case, and cases above the 0.01 gain-effect threshold; the compact grid was selected before primary evaluation.",
+    "eigenvalues": "-a and -b, exactly matched; both negative for a,b>0.",
+    "equation": "dx/dtau = A_kappa x",
+    "non_normal_matrix": "A_kappa = [[-a,kappa],[0,-b]]",
+    "normal_matrix": "A0 = [[-a,0],[0,-b]]",
+    "normality": "A0 is normal; A_kappa is non-normal for kappa != 0.",
+    "parameters": {
+      "a": 1.0,
+      "b": 2.0,
+      "kappa_values": [
+        0.0,
+        2.0,
+        4.0,
+        8.0
+      ]
+    },
+    "time": "Dimensionless tau=t/t_ref; A entries are dimensionless rates per unit tau."
+  },
+  "phase": 64,
+  "preserved_status": {
+    "kuramoto": "CLOSED_INCONCLUSIVE_UNDER_DECLARED_PROTOCOL",
+    "phase32": "BLOCKED_AUTHORIZATION",
+    "phase52": "NO-GO",
+    "phase62": "COMPLETE_BOUNDED_PILOT"
+  },
+  "protocol": {
+    "baseline": "A0 with same a,b; its induced 2-norm is max(exp(-a*t),exp(-b*t)) and is at most 1, with grid maximum 1 at t=0.",
+    "gain_effect_threshold": 0.01,
+    "horizon": [
+      0.0,
+      4.0
+    ],
+    "horizon_rationale": "Four decay times of the slow eigenmode a=1 leave exp(-4) of its asymptotic component; this includes early growth and substantial late decay.",
+    "identity_check": "Check P(0)=I exactly within 1e-14.",
+    "independent_propagator_check": "Compare closed-form P(t) against scipy.linalg.expm(A*t) for all kappa at fixed times 0, 0.37, 1.2, and 4, tolerance 1e-12 in max absolute entry.",
+    "numerical_comparisons": [
+      {
+        "initial_condition": "leading right singular vector at the sampled maximum (coordinate e1 at t=0)",
+        "kappa": 0.0
+      },
+      {
+        "initial_condition": "leading right singular vector at the primary sampled maximum",
+        "kappa": 4.0
+      },
+      {
+        "initial_condition": "leading right singular vector at the primary sampled maximum",
+        "kappa": 8.0
+      },
+      {
+        "initial_condition": "coordinate vector e2, as a non-optimal-direction diagnostic",
+        "kappa": 8.0
+      }
+    ],
+    "optimal_initial_direction": "Use the leading right singular vector of P(t_peak) on the primary grid; make its largest-magnitude component positive to fix the otherwise arbitrary sign.",
+    "primary_outcomes": [
+      "sampled positive-time gain above 1+0.01",
+      "sampled-horizon maximum gain relative to matched normal baseline",
+      "peak sampled time",
+      "analytic propagator and gain curves"
+    ],
+    "primary_time_grid": {
+      "points": 401,
+      "spacing": 0.01
+    },
+    "randomness": "None; deterministic.",
+    "resolution_grid": {
+      "acceptance_peak_gain_change_at_most": 0.0001,
+      "acceptance_peak_time_change_at_most": 0.01,
+      "points": 801,
+      "spacing": 0.005
+    },
+    "semigroup_check": "Check max absolute entry of P(s+t)-P(s)P(t) at frozen pairs (0.2,0.7), (0.8,1.1), tolerance 1e-12.",
+    "solver": {
+      "absolute_tolerance": 1e-12,
+      "maximum_step": 0.025,
+      "method": "DOP853",
+      "output_points": 401,
+      "relative_tolerance": 1e-10
+    },
+    "threshold_rationale": "An absolute gain increase of 0.01 is a predeclared 1% change relative to a unit-norm initial perturbation; it is an operational descriptive threshold, not a universal physical threshold.",
+    "tight_solver": {
+      "absolute_tolerance": 1e-14,
+      "maximum_step": 0.005,
+      "method": "DOP853",
+      "output_points": 801,
+      "relative_tolerance": 1e-12,
+      "trajectory_acceptance_tolerance": 1e-08
+    },
+    "tighter_solver_conditions": "Repeat optimal initial directions at kappa=4 and 8.",
+    "trajectory_acceptance_tolerance": 1e-08,
+    "trajectory_error_metric": "Maximum over output times of the Euclidean norm of numerical state minus analytic P(t)x0."
+  },
+  "protocol_status": "frozen_before_primary_evaluation",
+  "protocol_version": "1.0",
+  "reproducibility": {
+    "manifest": "SHA-256 for all files in this report output directory except the manifest itself.",
+    "random_seed": null,
+    "rerun": "Copy design_exploration.json and protocol.json into an empty isolated directory; run the study there and compare every manifested output hash."
+  },
+  "research_question": "Can a stable non-normal system exhibit greater finite-time amplification than a normal system with the same eigenvalues under a declared state norm and finite horizon?",
+  "stopping_criteria": [
+    "Stop after all four frozen kappa values, prescribed solver comparisons, and numerical checks are reported.",
+    "If required checks fail, report the affected result as unresolved and diagnose only the specific failure; do not widen the matrix/coupling/horizon design to obtain a preferred result.",
+    "Do not extend the matrix family or claim physical/cross-domain validation."
+  ]
+}

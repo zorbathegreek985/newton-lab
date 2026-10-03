@@ -1,0 +1,98 @@
+"""Physics knowledge taxonomy and equation registry."""
+
+from newton_lab.knowledge.examples import (
+    build_example_knowledge_base,
+    build_example_registry,
+)
+from newton_lab.knowledge.ingestion import (
+    candidate_from_json_file,
+    candidate_from_mapping,
+    candidate_from_project_example,
+    candidates_from_example_registry,
+)
+from newton_lab.knowledge.registry import (
+    ApplicationMapping,
+    ApplicationMappingLevel,
+    EquationRecord,
+    EquationRegistry,
+    EquationRelation,
+    EvidenceCategory,
+    EvidenceClaim,
+    ImplementationStatus,
+    Linearity,
+    MathematicalClassification,
+    MathematicalStructure,
+    QuantityDefinition,
+    RelationshipType,
+    SourceReference,
+    SourceType,
+    VerificationStatus,
+)
+from newton_lab.knowledge.storage import STORE_SCHEMA_VERSION, JsonKnowledgeStore
+from newton_lab.knowledge.structure import (
+    FeatureComparison,
+    FeatureComparisonStatus,
+    StructureComparison,
+    compare_equations,
+    propose_relationships,
+)
+from newton_lab.knowledge.taxonomy import (
+    PhysicsBranch,
+    PhysicsTaxonomy,
+    Subfield,
+    default_physics_taxonomy,
+)
+from newton_lab.knowledge.workflow import (
+    CandidateEntry,
+    EquationRelationship,
+    IngestionOrigin,
+    KnowledgeBase,
+    RelationshipReviewStatus,
+    ReviewChecklist,
+    ReviewEvent,
+    ReviewState,
+)
+
+__all__ = [
+    "ApplicationMapping",
+    "ApplicationMappingLevel",
+    "CandidateEntry",
+    "EquationRecord",
+    "EquationRelationship",
+    "EquationRegistry",
+    "EquationRelation",
+    "EvidenceCategory",
+    "EvidenceClaim",
+    "ImplementationStatus",
+    "Linearity",
+    "IngestionOrigin",
+    "JsonKnowledgeStore",
+    "KnowledgeBase",
+    "MathematicalClassification",
+    "MathematicalStructure",
+    "PhysicsBranch",
+    "PhysicsTaxonomy",
+    "QuantityDefinition",
+    "RelationshipType",
+    "ReviewChecklist",
+    "ReviewEvent",
+    "RelationshipReviewStatus",
+    "ReviewState",
+    "SourceReference",
+    "SourceType",
+    "STORE_SCHEMA_VERSION",
+    "Subfield",
+    "VerificationStatus",
+    "FeatureComparison",
+    "FeatureComparisonStatus",
+    "StructureComparison",
+    "build_example_knowledge_base",
+    "build_example_registry",
+    "compare_equations",
+    "default_physics_taxonomy",
+    "candidate_from_json_file",
+    "candidate_from_mapping",
+    "candidate_from_project_example",
+    "candidates_from_example_registry",
+    "propose_relationships",
+]
